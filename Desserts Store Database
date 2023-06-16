@@ -1,0 +1,42 @@
+--Create a grocery store database
+
+CREATE table Desserts (Id INTEGER PRIMARY KEY,category TEXT,cost INTEGER,name TEXT, rating INTEGER,allergy TEXT);
+
+INSERT INTO Desserts VALUES (1,"cookies",3,"chocolate chip",8,"glutten");
+
+INSERT INTO Desserts VALUES (2,"cookies",3,"sugar",6,"glutten");
+
+INSERT INTO Desserts VALUES (3,"cookies",3,"peanut butter",5,"peanut");
+
+INSERT INTO Desserts VALUES (4,"chessecake",5,"strawbrey cheesecake",6,"dariy");
+
+INSERT INTO Desserts VALUES (5,"chessecake",5,"blueberry cheesecake",8,"dariy");
+
+INSERT INTO Desserts VALUES(6,"cheesecake",5,"oreo cheesecake",10,"dariy");
+
+INSERT INTO Desserts VALUES (7,"brownie",4,"chocolate fudge",9,"chocolate");
+
+INSERT INTO Desserts VALUES (8,"brownie",4,"chocolate nut",6,"peanut");
+
+INSERT INTO Desserts VALUES (9,"brownie",4,"smore",10,"dariy");
+
+INSERT INTO Desserts VALUES (10,"cake",6,"chocolate",6,"chocolate");
+
+INSERT INTO Desserts VALUES (11,"cake",6,"valnila",8,"dariy");
+
+INSERT INTO Desserts VALUES (12,"cake",7,"strawberry short cake",10,"dairy");
+
+INSERT INTO Desserts VALUES (13,"ice cream",3,"rockey road",9,"peanuts");
+
+INSERT INTO Desserts VALUES (14,"ice cream",3,"birthday cake",10,"dairy");
+
+INSERT INTO Desserts VALUES (15,"ice cream",4,"mango gelato",10,"N/a");
+
+
+--display the database ordered by price. 
+SELECT * FROM Desserts 
+ORDER BY cost;
+
+
+--What desserts contain dairy allergy?
+SELECT * FROM Desserts WHERE allergy = "dariy"
