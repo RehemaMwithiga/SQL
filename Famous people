@@ -1,0 +1,77 @@
+/* Create table about the people and what they do here */
+
+CREATE TABLE Artists(id INTEGER PRIMARY KEY,
+fullname TEXT,
+age INTEGER,
+genre TEXT);
+
+INSERT INTO Artists(fullname,age,genre) VALUES("Queen_Naija",28,"Randb");
+INSERT INTO Artists(fullname,age,genre) VALUES("Drake",37,"Rap");
+INSERT INTO Artists(fullname,age,genre) VALUES("Rihanna",35,"Pop");
+INSERT INTO Artists(fullname,age,genre) VALUES("Beyoncé",42,"Randb");
+INSERT INTO Artists(fullname,age,genre) VALUES("Chandler_Moore",28,"Gospel");
+INSERT INTO Artists(fullname,age,genre) VALUES("Naomi_aine",36,"Gospel");
+INSERT INTO Artists(fullname,age,genre) VALUES("Cardi_B",31,"Rap");
+INSERT INTO Artists(fullname,age,genre) VALUES("Burna_Boy",32,"Afrobeats");
+
+CREATE TABLE Hobbies(id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT);
+
+INSERT INTO Hobbies(id,name)
+VALUES (1,"youtube");
+INSERT INTO Hobbies(id,name)
+VALUES (2,"acting");
+INSERT INTO Hobbies(id,name)
+VALUES (3,"acting");
+INSERT INTO Hobbies(id,name)
+VALUES (4,"acting");
+INSERT INTO Hobbies(id,name)
+VALUES (5,"workship_leader");
+INSERT INTO Hobbies(id,name)
+VALUES (6,"workship_leader");
+
+CREATE TABLE Music(id INTEGER PRIMARY KEY,number_of_albums INTEGER,popular_song TEXT ,awards TEXT);
+
+INSERT INTO Music(number_of_albums,popular_song,awards)
+VALUES(1,"Medicine,","gold status");
+INSERT INTO Music(number_of_albums,popular_song,awards)
+VALUES(3,"Yes_Indeed","Grammay");
+INSERT INTO Music(number_of_albums,popular_song,awards)
+VALUES(8,"We_found_love","Grammay/Oscar");
+INSERT INTO Music(number_of_albums,popular_song,awards)
+VALUES(7, "Crazy_in_Love","Grammay");
+INSERT INTO Music(number_of_albums,popular_song,awards)
+VALUES(6,"He_Understands","Grammay/Dove");
+INSERT INTO Music(number_of_albums,popular_song,awards)
+VALUES(9, "One_Name","Grammay/Dove");
+
+
+
+# Analysis: 
+
+#What are all of the Artists most popular songs?
+
+SELECT Artists.fullname,Music.popular_song
+FROM Artists
+INNER JOIN Music
+ON Artists.id=Music.id
+;
+
+#What Artists have received grammy awards and have released more than 2 albums?
+
+SELECT Artists.fullname,Music.number_of_albums,Music.awards
+FROM Artists 
+LEFT JOIN Music 
+ON Artists.id=Music.id
+WHERE Music.awards="Grammay" AND Music.number_of_albums > 2 OR Music.awards="Grammay/Dove"
+ORDER BY Music.number_of_albums DESC
+;
+
+#What kind of music do the artists produce and what are their day to day hobbies?
+
+SELECT Artists.fullname,Artists.genre,Hobbies.name
+FROM Artists
+LEFT JOIN Hobbies
+ON Artists.id=Hobbies.id
+;
+
+
