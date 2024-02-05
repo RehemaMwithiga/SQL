@@ -1,0 +1,53 @@
+# For this project, I downloaded The SQL Murder Mystery from King lab into SQLiteStudio.
+# Then, I performed analytics on the data using SQL.
+
+
+#Background Information:A crime has taken place and the detective needs your help. The detective gave you the crime scene report, but you somehow lost it. 
+You vaguely remember that the crime was a ​murder​ that occurred sometime on ​Jan.15, 2018​ and that it took place in ​SQL City​. 
+
+#1 Retrieve the corresponding crime scene report from the police department’s database.
+SELECT * FROM crime_scene_report 
+WHERE type = 'murder' 
+AND city = 'SQL City'
+AND date = '20180115';
+
+#2 Based on the information on the crime scene report,  Who are the two witness?
+SELECT * FROM person 
+WHERE address_street_name = 'Northwestern Dr' 
+ORDER BY address_number DESC LIMIT 1;
+
+SELECT * FROM person 
+WHERE name like '%Annabel%'
+AND address_street_name = 'Franklin Ave';
+
+#3 Write a query that shows the interview transcripts for our two subjects.
+SELECT p.name,i.transcript
+FROM person p
+JOIN interview i
+ON i.person_id = p.id
+WHERE p.name = 'Morty Schapiro'
+OR p.name = 'Annabel Miller';
+
+#4 Write a query that shows all members whos membership id starts with a "48Z"and are gold members.
+SELECT *
+FROM get_fit_now_member 
+WHERE id LIKE '%48Z%'
+AND membership_status = 'gold'
+
+#5 Who is the murderer?
+SELECT p.name, d.gender, d.plate_number, m.id, c.check_in_date
+FROM drivers_license d
+
+JOIN person AS p 
+ON p.license_id = d.id
+
+JOIN get_fit_now_member m 
+ON m.person_id = p.id
+
+JOIN get_fit_now_check_in c 
+ON c.membership_id = m.id
+
+WHERE d.plate_number LIKE '%H42W%'
+AND c.check_in_date = '20180109'
+AND m.id LIKE '%48Z%'
+AND m.membership_status = 'gold'; 
