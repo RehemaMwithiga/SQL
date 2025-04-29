@@ -33,6 +33,4 @@
 
 
 
-<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=rehemamwithiga&show_icons=true&locale=en" alt="rehemamwithiga" /></p>
 
-<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=rehemamwithiga&" alt="rehemamwithiga" /></p>
